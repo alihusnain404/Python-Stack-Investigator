@@ -1,0 +1,602 @@
+{
+  "ZeroDivisionError": {
+    "language": "Python",
+    "buggy_code": "result = total_items / user_count",
+    "patched_code": "result = total_items / user_count if user_count != 0 else 0",
+    "remedy": "Added safety check to prevent dividing by zero."
+  },
+  "FileNotFoundError": {
+    "language": "Python",
+    "buggy_code": "with open('config.json') as f:",
+    "patched_code": "import os\nif os.path.exists('config.json'):\n    with open('config.json') as f:",
+    "remedy": "Added path existence enforcement before reading system configuration."
+  },
+  "KeyError": {
+    "language": "Python",
+    "buggy_code": "user_role = payload['role']",
+    "patched_code": "user_role = payload.get('role', 'guest')",
+    "remedy": "Replaced direct dictionary access with .get() method to provide a default fallback value."
+  },
+  "IndexError": {
+    "language": "Python",
+    "buggy_code": "first_item = data_list[0]",
+    "patched_code": "first_item = data_list[0] if data_list else None",
+    "remedy": "Added empty array validation before accessing elements by index."
+  },
+  "TypeError: unsupported operand type(s)": {
+    "language": "Python",
+    "buggy_code": "total = price + '10'",
+    "patched_code": "total = price + float('10')",
+    "remedy": "Explicitly cast string variable to numeric data type before arithmetic execution."
+  },
+  "AttributeError": {
+    "language": "Python",
+    "buggy_code": "response.lower()",
+    "patched_code": "if response and isinstance(response, str):\n    response = response.lower()",
+    "remedy": "Added null check and data type verification before calling string-specific functions."
+  },
+  "IndentationError": {
+    "language": "Python",
+    "buggy_code": "def process():\nprint('starting')",
+    "patched_code": "def process():\n    print('starting')",
+    "remedy": "Aligned indentation levels according to PEP 8 standards (4 spaces)."
+  },
+  "RecursionError": {
+    "language": "Python",
+    "buggy_code": "def count(n):\n    return count(n)",
+    "patched_code": "def count(n):\n    if n <= 0: return 0\n    return count(n - 1)",
+    "remedy": "Added base condition to prevent infinite recursion stack overflow."
+  },
+  "ValueError: invalid literal for int()": {
+    "language": "Python",
+    "buggy_code": "age = int(user_input)",
+    "patched_code": "age = int(user_input) if user_input.isdigit() else 0",
+    "remedy": "Validated string numeric content using isdigit() before casting."
+  },
+  "NameError": {
+    "language": "Python",
+    "buggy_code": "print(total_score)",
+    "patched_code": "total_score = 0\nprint(total_score)",
+    "remedy": "Ensured variable declaration and initialization prior to reference."
+  },
+  "UnboundLocalError": {
+    "language": "Python",
+    "buggy_code": "count = 0\ndef inc():\n    count += 1",
+    "patched_code": "count = 0\ndef inc():\n    global count\n    count += 1",
+    "remedy": "Added global keyword to modify scope variable inside function."
+  },
+  "StopIteration": {
+    "language": "Python",
+    "buggy_code": "val = next(my_iterator)",
+    "patched_code": "val = next(my_iterator, None)",
+    "remedy": "Passed default fallback argument to next() function call."
+  },
+  "ImportError": {
+    "language": "Python",
+    "buggy_code": "from utils import helper",
+    "patched_code": "try:\n    from utils import helper\nexcept ImportError:\n    import helper",
+    "remedy": "Added fallback try-except import path resolution."
+  },
+  "ModuleNotFoundError": {
+    "language": "Python",
+    "buggy_code": "import custom_pkg",
+    "patched_code": "import sys, os\nsys.path.append(os.path.dirname(__file__))\nimport custom_pkg",
+    "remedy": "Appended current working directory path to sys.path."
+  },
+  "MemoryError": {
+    "language": "Python",
+    "buggy_code": "lines = open('big.log').readlines()",
+    "patched_code": "with open('big.log') as f:\n    for line in f:\n        process(line)",
+    "remedy": "Replaced full file loading with memory-efficient line generator streaming."
+  },
+  "SyntaxError: invalid syntax": {
+    "language": "Python",
+    "buggy_code": "if user_count = 5:",
+    "patched_code": "if user_count == 5:",
+    "remedy": "Replaced assignment operator (=) with equality comparison operator (==)."
+  },
+  "PermissionError": {
+    "language": "Python",
+    "buggy_code": "open('/etc/root_file.txt', 'w')",
+    "patched_code": "import tempfile\ntempfile.NamedTemporaryFile(delete=False)",
+    "remedy": "Changed restricted system file path write destination to temporary directory."
+  },
+  "JSONDecodeError": {
+    "language": "Python",
+    "buggy_code": "data = json.loads(raw_str)",
+    "patched_code": "try:\n    data = json.loads(raw_str)\nexcept json.JSONDecodeError:\n    data = {}",
+    "remedy": "Handled invalid JSON format parsing with default empty dictionary fallback."
+  },
+  "NotImplementedError": {
+    "language": "Python",
+    "buggy_code": "def execute(self):\n    pass",
+    "patched_code": "def execute(self):\n    raise NotImplementedError('Subclass must implement abstract method')",
+    "remedy": "Provided descriptive error context for un-implemented abstract base methods."
+  },
+  "OverflowError": {
+    "language": "Python",
+    "buggy_code": "math.exp(1000)",
+    "patched_code": "try:\n    res = math.exp(1000)\nexcept OverflowError:\n    res = float('inf')",
+    "remedy": "Wrapped boundary math calculation with floating infinity exception handling."
+  },
+  "TypeError: Cannot read properties of undefined": {
+    "language": "JavaScript / Node.js",
+    "buggy_code": "const name = user.profile.name;",
+    "patched_code": "const name = user?.profile?.name ?? 'Guest';",
+    "remedy": "Applied optional chaining operator (?.) to safely access nested objects."
+  },
+  "ReferenceError": {
+    "language": "JavaScript",
+    "buggy_code": "console.log(totalAmount);",
+    "patched_code": "let totalAmount = 0;\nconsole.log(totalAmount);",
+    "remedy": "Declared variable before accessing it to eliminate temporal dead zone errors."
+  },
+  "UnhandledPromiseRejectionWarning": {
+    "language": "Node.js",
+    "buggy_code": "async function getData() {\n    const res = await fetch(url);\n}",
+    "patched_code": "async function getData() {\n    try {\n        const res = await fetch(url);\n    } catch (err) {\n        console.error(err);\n    }\n}",
+    "remedy": "Wrapped async/await operation in a try-catch block to handle network promise failures."
+  },
+  "ECONNREFUSED": {
+    "language": "Node.js / Express",
+    "buggy_code": "axios.get('http://localhost:5000/api')",
+    "patched_code": "axios.get('http://localhost:5000/api').catch(err => console.error('Service Down'))",
+    "remedy": "Wrapped async HTTP request in a proper error handler to prevent process crash."
+  },
+  "SyntaxError: Unexpected token": {
+    "language": "JavaScript",
+    "buggy_code": "const data = JSON.parse(rawText);",
+    "patched_code": "let data;\ntry {\n    data = JSON.parse(rawText);\n} catch (e) {\n    data = {};\n}",
+    "remedy": "Safe JSON string parsing with fallback default object."
+  },
+  "RangeError: Maximum call stack size exceeded": {
+    "language": "JavaScript",
+    "buggy_code": "function loop() { loop(); }",
+    "patched_code": "function loop() { setTimeout(loop, 0); }",
+    "remedy": "Offloaded recursive execution to event loop queue via setTimeout."
+  },
+  "TypeError: is not a function": {
+    "language": "JavaScript",
+    "buggy_code": "data.map(item => item.id)",
+    "patched_code": "Array.isArray(data) ? data.map(item => item.id) : []",
+    "remedy": "Verified array data structure type before calling map() method."
+  },
+  "CORS Error": {
+    "language": "Node.js / Web",
+    "buggy_code": "app.get('/api', (req, res) => res.json(data))",
+    "patched_code": "const cors = require('cors');\napp.use(cors());\napp.get('/api', (req, res) => res.json(data))",
+    "remedy": "Configured Cross-Origin Resource Sharing (CORS) middleware header."
+  },
+  "ERR_HTTP_HEADERS_SENT": {
+    "language": "Node.js / Express",
+    "buggy_code": "res.send('a'); res.send('b');",
+    "patched_code": "res.send('a'); return;",
+    "remedy": "Added early return control flow after sending initial HTTP response."
+  },
+  "EADDRINUSE": {
+    "language": "Node.js",
+    "buggy_code": "app.listen(3000)",
+    "patched_code": "const PORT = process.env.PORT || 3001;\napp.listen(PORT)",
+    "remedy": "Dynamically specified alternative fallback environment port."
+  },
+  "ENOTFOUND": {
+    "language": "Node.js",
+    "buggy_code": "dns.lookup('invalid-domain-name-xyz.com')",
+    "patched_code": "dns.lookup('invalid-domain-name-xyz.com', (err) => {\n    if (err) console.error('Host domain unresolved');\n})",
+    "remedy": "Handled DNS domain name lookup resolution failures."
+  },
+  "TypeError: Assignment to constant variable": {
+    "language": "JavaScript",
+    "buggy_code": "const count = 0; count++;",
+    "patched_code": "let count = 0; count++;",
+    "remedy": "Replaced 'const' keyword with mutable 'let' declaration."
+  },
+  "URIError: URI malformed": {
+    "language": "JavaScript",
+    "buggy_code": "decodeURIComponent('%')",
+    "patched_code": "try { decodeURIComponent(str); } catch { str; }",
+    "remedy": "Wrapped URI string decoding in safe try-catch block."
+  },
+  "ERR_MODULE_NOT_FOUND": {
+    "language": "Node.js (ESM)",
+    "buggy_code": "import { util } from './util';",
+    "patched_code": "import { util } from './util.js';",
+    "remedy": "Appended explicit file extension (.js) for ECMAScript Modules."
+  },
+  "MODULE_NOT_FOUND": {
+    "language": "Node.js (CommonJS)",
+    "buggy_code": "require('missing_pkg')",
+    "patched_code": "// Execute in terminal: npm install missing_pkg",
+    "remedy": "Installed missing project dependency module via package manager."
+  },
+  "NullPointerException": {
+    "language": "Java",
+    "buggy_code": "String text = user.getName().toLowerCase();",
+    "patched_code": "String text = (user != null && user.getName() != null) ? user.getName().toLowerCase() : \"\";",
+    "remedy": "Enforced object and property null verification before invocation."
+  },
+  "ArrayIndexOutOfBoundsException": {
+    "language": "Java",
+    "buggy_code": "int item = numbers[5];",
+    "patched_code": "int item = (numbers.length > 5) ? numbers[5] : -1;",
+    "remedy": "Added array boundary checks before indexing to prevent runtime crashing."
+  },
+  "ClassCastException": {
+    "language": "Java",
+    "buggy_code": "String str = (String) obj;",
+    "patched_code": "if (obj instanceof String) {\n    String str = (String) obj;\n}",
+    "remedy": "Verified object instance type using 'instanceof' check prior to casting."
+  },
+  "ConcurrentModificationException": {
+    "language": "Java",
+    "buggy_code": "for(String item : list) { list.remove(item); }",
+    "patched_code": "list.removeIf(item -> item.equals(\"target\"));",
+    "remedy": "Replaced direct loop mutation with thread-safe removeIf/Iterator logic."
+  },
+  "NumberFormatException": {
+    "language": "Java",
+    "buggy_code": "int val = Integer.parseInt(\"abc\");",
+    "patched_code": "try { int val = Integer.parseInt(str); } catch(NumberFormatException e) { int val = 0; }",
+    "remedy": "Wrapped string-to-int conversion inside exception boundary."
+  },
+  "IllegalArgumentException": {
+    "language": "Java",
+    "buggy_code": "Thread.sleep(-100);",
+    "patched_code": "if (millis > 0) Thread.sleep(millis);",
+    "remedy": "Validated method argument parameters against positive numeric constraints."
+  },
+  "IllegalStateException": {
+    "language": "Java",
+    "buggy_code": "iterator.remove();",
+    "patched_code": "if (iterator.hasNext()) { iterator.next(); iterator.remove(); }",
+    "remedy": "Ensured method call sequence state prerequisites are satisfied."
+  },
+  "StackOverflowError": {
+    "language": "Java",
+    "buggy_code": "public void run() { run(); }",
+    "patched_code": "public void run(int count) { if(count <= 0) return; run(count - 1); }",
+    "remedy": "Provided tail recursion termination condition base step."
+  },
+  "OutOfMemoryError: Java heap space": {
+    "language": "Java",
+    "buggy_code": "List<byte[]> list = new ArrayList<>(); while(true) list.add(new byte[1000000]);",
+    "patched_code": "// Configure JVM argument: -Xmx2048m\nlist.clear(); System.gc();",
+    "remedy": "Increased JVM heap memory size allocation limits."
+  },
+  "NoSuchMethodError": {
+    "language": "Java",
+    "buggy_code": "object.oldMethod();",
+    "patched_code": "// Recompile target dependencies to align binary versions.",
+    "remedy": "Cleaned and rebuilt project build artifact dependency tree."
+  },
+  "ClassNotFoundException": {
+    "language": "Java",
+    "buggy_code": "Class.forName(\"com.mysql.jdbc.Driver\")",
+    "patched_code": "// Added mysql-connector-j jar dependency into project build classpath.",
+    "remedy": "Included target missing JAR library into execution build runtime."
+  },
+  "NoClassDefFoundError": {
+    "language": "Java",
+    "buggy_code": "HelperClass helper = new HelperClass();",
+    "patched_code": "// Verified Maven / Gradle build inclusion step for HelperClass.",
+    "remedy": "Ensured static class compilation dependency present during execution."
+  },
+  "StringIndexOutOfBoundsException": {
+    "language": "Java",
+    "buggy_code": "char c = str.charAt(10);",
+    "patched_code": "char c = (str != null && str.length() > 10) ? str.charAt(10) : ' ';",
+    "remedy": "Enforced string boundary length checks before charAt indexing."
+  },
+  "ArithmeticException": {
+    "language": "Java",
+    "buggy_code": "int res = 10 / 0;",
+    "patched_code": "int res = (b != 0) ? 10 / b : 0;",
+    "remedy": "Enforced non-zero denominator condition check."
+  },
+  "Segmentation fault (core dumped)": {
+    "language": "C / C++",
+    "buggy_code": "int *ptr = NULL;\n*ptr = 10;",
+    "patched_code": "int *ptr = malloc(sizeof(int));\nif(ptr != NULL) {\n    *ptr = 10;\n}",
+    "remedy": "Allocated memory before dereferencing pointer and verified allocation success."
+  },
+  "std::out_of_range": {
+    "language": "C++",
+    "buggy_code": "int val = vec.at(10);",
+    "patched_code": "if (vec.size() > 10) {\n    int val = vec.at(10);\n}",
+    "remedy": "Checked std::vector size boundary before calling .at() accessor."
+  },
+  "double free or corruption": {
+    "language": "C / C++",
+    "buggy_code": "free(ptr);\nfree(ptr);",
+    "patched_code": "if (ptr != NULL) {\n    free(ptr);\n    ptr = NULL;\n}",
+    "remedy": "Set pointer to NULL immediately after freeing memory to prevent double deallocation."
+  },
+  "std::bad_alloc": {
+    "language": "C++",
+    "buggy_code": "int *arr = new int[1000000000000000];",
+    "patched_code": "try { int *arr = new int[size]; } catch (const std::bad_alloc& e) { std::cerr << e.what(); }",
+    "remedy": "Wrapped dynamic heap allocation in bad_alloc exception handler."
+  },
+  "bus error": {
+    "language": "C / C++",
+    "buggy_code": "char *str = \"hello\"; str[0] = 'H';",
+    "patched_code": "char str[] = \"hello\"; str[0] = 'H';",
+    "remedy": "Moved string storage from read-only memory segment to writable array."
+  },
+  "undefined reference to": {
+    "language": "C / C++",
+    "buggy_code": "void display(); int main() { display(); }",
+    "patched_code": "void display() { printf(\"Hello\"); } int main() { display(); }",
+    "remedy": "Provided function body implementation definition to linker."
+  },
+  "use after free": {
+    "language": "C / C++",
+    "buggy_code": "free(p); printf(\"%d\", *p);",
+    "patched_code": "printf(\"%d\", *p); free(p); p = NULL;",
+    "remedy": "Reordered execution sequence before deallocating memory address."
+  },
+  "memory leak": {
+    "language": "C / C++",
+    "buggy_code": "void foo() { int *p = malloc(10); }",
+    "patched_code": "void foo() { int *p = malloc(10); free(p); }",
+    "remedy": "Explicitly freed dynamically allocated heap pointers before function exit."
+  },
+  "std::bad_cast": {
+    "language": "C++",
+    "buggy_code": "Base b; Derived& d = dynamic_cast<Derived&>(b);",
+    "patched_code": "Base* b = getBase(); if(Derived* d = dynamic_cast<Derived*>(b)) { /* safe */ }",
+    "remedy": "Used dynamic_cast with pointers instead of references for safe dynamic casting."
+  },
+  "borrowed value does not live long enough": {
+    "language": "Rust",
+    "buggy_code": "let r;\n{ let x = 5; r = &x; }",
+    "patched_code": "let x = 5;\nlet r = &x;",
+    "remedy": "Adjusted variables variable scope to align lifetime expectancies."
+  },
+  "cannot borrow as mutable": {
+    "language": "Rust",
+    "buggy_code": "let x = 5;\nx += 1;",
+    "patched_code": "let mut x = 5;\nx += 1;",
+    "remedy": "Added 'mut' keyword to enable explicit variable mutability."
+  },
+  "use of moved value": {
+    "language": "Rust",
+    "buggy_code": "let s = String::from(\"a\"); let s2 = s; println!(\"{}\", s);",
+    "patched_code": "let s = String::from(\"a\"); let s2 = s.clone(); println!(\"{}\", s);",
+    "remedy": "Used .clone() method to duplicate heap value ownership."
+  },
+  "cannot borrow as mutable more than once at a time": {
+    "language": "Rust",
+    "buggy_code": "let mut x = 5; let r1 = &mut x; let r2 = &mut x;",
+    "patched_code": "let mut x = 5; { let r1 = &mut x; } let r2 = &mut x;",
+    "remedy": "Restricted scope boundaries of simultaneous mutable references."
+  },
+  "mismatched types": {
+    "language": "Rust",
+    "buggy_code": "let x: u32 = -5;",
+    "patched_code": "let x: i32 = -5;",
+    "remedy": "Changed unsigned integer type (u32) to signed integer type (i32)."
+  },
+  "E0308": {
+    "language": "Rust",
+    "buggy_code": "fn add() -> i32 { \"hello\" }",
+    "patched_code": "fn add() -> &'static str { \"hello\" }",
+    "remedy": "Aligned function signature return value type definition."
+  },
+  "panic: runtime error: index out of range": {
+    "language": "Go (Golang)",
+    "buggy_code": "val := slice[3]",
+    "patched_code": "if len(slice) > 3 {\n    val := slice[3]\n}",
+    "remedy": "Verified slice length with len() check prior to array indexing."
+  },
+  "invalid memory address or nil pointer dereference": {
+    "language": "Go (Golang)",
+    "buggy_code": "fmt.Println(user.Name)",
+    "patched_code": "if user != nil {\n    fmt.Println(user.Name)\n}",
+    "remedy": "Added nil pointer check before accessing struct fields."
+  },
+  "fatal error: concurrent map writes": {
+    "language": "Go (Golang)",
+    "buggy_code": "go func() { m[\"key\"] = 1 }()",
+    "patched_code": "var mu sync.Mutex; mu.Lock(); m[\"key\"] = 1; mu.Unlock();",
+    "remedy": "Protected concurrent map updates using sync.Mutex locking."
+  },
+  "goroutine leak": {
+    "language": "Go (Golang)",
+    "buggy_code": "ch := make(chan int); go func() { ch <- 1 }()",
+    "patched_code": "ch := make(chan int, 1); go func() { ch <- 1 }()",
+    "remedy": "Used buffered channel to prevent goroutine blocking on send."
+  },
+  "panic: send on closed channel": {
+    "language": "Go (Golang)",
+    "buggy_code": "close(ch); ch <- 1;",
+    "patched_code": "select { case ch <- 1: default: }",
+    "remedy": "Guarded channel communications against sending to closed channels."
+  },
+  "Fatal error: Uncaught Error: Call to a member function on null": {
+    "language": "PHP",
+    "buggy_code": "$user->getProfile()->update();",
+    "patched_code": "if ($user && $user->getProfile()) {\n    $user->getProfile()->update();\n}",
+    "remedy": "Enforced object checking before invoking chaining method calls."
+  },
+  "Parse error: syntax error, unexpected token": {
+    "language": "PHP",
+    "buggy_code": "echo 'Hello' World;",
+    "patched_code": "echo 'Hello World';",
+    "remedy": "Fixed string concatenation and quotes syntax errors."
+  },
+  "Undefined array key": {
+    "language": "PHP",
+    "buggy_code": "$val = $_GET['id'];",
+    "patched_code": "$val = $_GET['id'] ?? null;",
+    "remedy": "Applied null coalescing operator (??) to safely fetch array keys."
+  },
+  "Maximum execution time exceeded": {
+    "language": "PHP",
+    "buggy_code": "while(true) { process(); }",
+    "patched_code": "set_time_limit(60);",
+    "remedy": "Adjusted maximum script execution time limit limit value."
+  },
+  "Allowed memory size exhausted": {
+    "language": "PHP",
+    "buggy_code": "$data = file_get_contents('hugefile.zip');",
+    "patched_code": "ini_set('memory_limit', '512M');",
+    "remedy": "Increased PHP execution RAM memory limit configuration."
+  },
+  "System.NullReferenceException": {
+    "language": "C# / .NET",
+    "buggy_code": "string name = user.Name.ToUpper();",
+    "patched_code": "string name = user?.Name?.ToUpper() ?? \"Default\";",
+    "remedy": "Applied C# null-conditional operator (?.) and null-coalescing operator (??)."
+  },
+  "System.IndexOutOfRangeException": {
+    "language": "C# / .NET",
+    "buggy_code": "int val = arr[10];",
+    "patched_code": "if (arr.Length > 10) { int val = arr[10]; }",
+    "remedy": "Enforced array length check prior to accessing index."
+  },
+  "System.InvalidCastException": {
+    "language": "C# / .NET",
+    "buggy_code": "string s = (string)obj;",
+    "patched_code": "string s = obj as string;",
+    "remedy": "Used 'as' operator for safe reference type casting."
+  },
+  "System.FormatException": {
+    "language": "C# / .NET",
+    "buggy_code": "int num = int.Parse(\"abc\");",
+    "patched_code": "int.TryParse(\"abc\", out int num);",
+    "remedy": "Replaced int.Parse with safe int.TryParse method call."
+  },
+  "System.ArgumentNullException": {
+    "language": "C# / .NET",
+    "buggy_code": "ProcessData(null);",
+    "patched_code": "void ProcessData(string input) { if (input == null) return; }",
+    "remedy": "Added null guard clause inside method parameter receiver."
+  },
+  "System.ObjectDisposedException": {
+    "language": "C# / .NET",
+    "buggy_code": "stream.Dispose(); stream.Read(buf, 0, 1);",
+    "patched_code": "using (var stream = new FileStream(...)) { stream.Read(buf, 0, 1); }",
+    "remedy": "Enclosed disposable stream resource inside 'using' scope statement block."
+  },
+  "System.AggregateException": {
+    "language": "C# / .NET",
+    "buggy_code": "Task.WaitAll(t1, t2);",
+    "patched_code": "try { await Task.WhenAll(t1, t2); } catch (Exception ex) { }",
+    "remedy": "Replaced blocking WaitAll with async Task.WhenAll try-catch handling."
+  },
+  "OperationalError": {
+    "language": "SQL / PostgreSQL",
+    "buggy_code": "conn = psycopg2.connect(host='10.0.0.4')",
+    "patched_code": "conn = psycopg2.connect(host='127.0.0.1', connect_timeout=5)",
+    "remedy": "Updated host mapping to localhost and configured timeout safeguard."
+  },
+  "IntegrityError: UNIQUE constraint failed": {
+    "language": "SQL / Database",
+    "buggy_code": "INSERT INTO users (email) VALUES ('test@example.com');",
+    "patched_code": "INSERT INTO users (email) VALUES ('test@example.com') ON CONFLICT (email) DO NOTHING;",
+    "remedy": "Applied 'ON CONFLICT DO NOTHING' or upsert pattern to handle duplicate records."
+  },
+  "Deadlock detected": {
+    "language": "SQL / Database",
+    "buggy_code": "-- Transaction A updates Row 1 then Row 2\n-- Transaction B updates Row 2 then Row 1",
+    "patched_code": "-- Reorder SQL transactions to update rows in identical primary key sequence",
+    "remedy": "Standardized record lock update order across concurrent transactions."
+  },
+  "Syntax error in SQL statement": {
+    "language": "SQL",
+    "buggy_code": "SELECT * FORM users;",
+    "patched_code": "SELECT * FROM users;",
+    "remedy": "Corrected misspelled SQL keyword 'FORM' to 'FROM'."
+  },
+  "Foreign key constraint fails": {
+    "language": "SQL",
+    "buggy_code": "INSERT INTO orders (user_id) VALUES (9999);",
+    "patched_code": "IF EXISTS (SELECT 1 FROM users WHERE id = 9999) INSERT INTO orders ...",
+    "remedy": "Verified primary parent key existence before child row creation."
+  },
+  "Too many connections": {
+    "language": "SQL / MySQL",
+    "buggy_code": "max_connections = 10",
+    "patched_code": "max_connections = 200 # Or use connection pooling like PgBouncer",
+    "remedy": "Configured database connection pool and increased server connection limits."
+  },
+  "image pull backoff": {
+    "language": "Docker / Kubernetes",
+    "buggy_code": "image: myregistry.com/app:latest",
+    "patched_code": "image: myregistry.com/app:v1.0.0\nimagePullSecrets:\n  - name: regcred",
+    "remedy": "Specified explicit image tag version and configured registry credentials."
+  },
+  "OOMKilled": {
+    "language": "Docker / Infrastructure",
+    "buggy_code": "resources: {}\n",
+    "patched_code": "resources:\n  limits:\n    memory: \"512Mi\"\n  requests:\n    memory: \"256Mi\"",
+    "remedy": "Configured explicit RAM memory requests and safety ceiling limits."
+  },
+  "CrashLoopBackOff": {
+    "language": "Kubernetes",
+    "buggy_code": "command: [\"do-nothing-cmd\"]",
+    "patched_code": "livenessProbe:\n  httpGet:\n    path: /healthz\n    port: 8080",
+    "remedy": "Configured correct entrypoint command and container health liveness probe."
+  },
+  "404 Not Found": {
+    "language": "HTTP / REST API",
+    "buggy_code": "fetch('/api/v1/user')",
+    "patched_code": "fetch('/api/v1/users')",
+    "remedy": "Corrected target API endpoint URL route path."
+  },
+  "500 Internal Server Error": {
+    "language": "HTTP / Web Server",
+    "buggy_code": "// Uncaught server exception",
+    "patched_code": "app.use((err, req, res, next) => res.status(500).json({ error: 'Server Fault' }))",
+    "remedy": "Implemented global server exception catching middleware."
+  },
+  "502 Bad Gateway": {
+    "language": "Nginx / Infrastructure",
+    "buggy_code": "proxy_pass http://127.0.0.1:8000;",
+    "patched_code": "proxy_pass http://127.0.0.1:8080; # Align port with application listener",
+    "remedy": "Aligned proxy reverse target IP port with running backend process."
+  },
+  "504 Gateway Timeout": {
+    "language": "Nginx / Gateway",
+    "buggy_code": "proxy_read_timeout 10s;",
+    "patched_code": "proxy_read_timeout 60s;",
+    "remedy": "Increased upstream response timeout threshold duration."
+  },
+  "401 Unauthorized": {
+    "language": "HTTP / Auth",
+    "buggy_code": "fetch(url, { headers: {} })",
+    "patched_code": "fetch(url, { headers: { 'Authorization': 'Bearer ' + token } })",
+    "remedy": "Passed missing Authorization Bearer token header in request."
+  },
+  "403 Forbidden": {
+    "language": "HTTP / Security",
+    "buggy_code": "chmod 600 /var/www/index.html",
+    "patched_code": "chmod 644 /var/www/index.html",
+    "remedy": "Adjusted file resource system permissions to allow public web server reading."
+  },
+  "429 Too Many Requests": {
+    "language": "HTTP / API Rate Limit",
+    "buggy_code": "for(let i=0; i<1000; i++) fetch(url);",
+    "patched_code": "// Implement exponential backoff retry strategy",
+    "remedy": "Applied request throttling and exponential backoff delay retry loops."
+  },
+  "AccessDeniedException": {
+    "language": "Cloud / AWS SDK",
+    "buggy_code": "s3.getObject({ Bucket: 'private-bucket', Key: 'file' })",
+    "patched_code": "// Attached 's3:GetObject' permission policy to IAM Execution Role",
+    "remedy": "Granted required AWS IAM policy permissions to IAM execution role."
+  },
+  "ExpiredTokenException": {
+    "language": "Cloud / AWS SDK",
+    "buggy_code": "aws_access_key_id = OLD_KEY",
+    "patched_code": "aws sts get-caller-identity # Refresh credentials via AWS CLI SSO",
+    "remedy": "Refreshed expired temporary security STS authentication credentials."
+  },
+  "SSL: CERTIFICATE_VERIFY_FAILED": {
+    "language": "Python / Security",
+    "buggy_code": "requests.get('https://self-signed.local')",
+    "patched_code": "requests.get('https://self-signed.local', verify='/path/to/cert.pem')",
+    "remedy": "Configured local custom SSL CA bundle validation path."
+  }
+}
