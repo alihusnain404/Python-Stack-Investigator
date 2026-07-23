@@ -1,7 +1,7 @@
 # **Python Stack Investigator - Author ALI HUSNAIN** 
 
 <p align="center">
-  <img width="650px" height="150px" src="Icon/Banner.png" alt="Python Stack Investigator Banner">
+  <img width="650px" height="150px" src="icon/banner.png" alt="Python Stack Investigator Banner">
 </p>
 
 <p align="center">
@@ -58,7 +58,7 @@
 ## 📸 **Dashboard Screenshots**
 
 <p align="center">
-  <img width="800px" src="Icon/Banner2.png" alt="Dashboard Main Interface & Diagnostics Panel">
+  <img width="800px" src="icon/banner2.png" alt="Dashboard Main Interface & Diagnostics Panel">
 </p>
 
 <p align="center">
