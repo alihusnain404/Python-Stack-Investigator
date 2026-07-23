@@ -110,6 +110,8 @@ pip install -r requirements.txt
 
 ```bash
 streamlit run stack.py
+or
+python -m streamlit run stack.py
 
 ```
 
