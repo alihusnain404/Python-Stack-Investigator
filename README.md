@@ -124,16 +124,14 @@ http://localhost:8501
 
 ## 🧪 **Testing Sandbox (`/docker-demo`)**
 
-This repository includes a dedicated Docker sandbox to safely test live container log harvesting.
-
 ```bash
 # 1. Navigate to the demo sandbox
 cd docker-demo
 
-# 2. Build the test container
+# 2. Build the testing container
 docker build -t test-buggy-app .
 
-# 3. Run the container to produce multi-stack logs
+# 3. Run the container to produce continuous multi-stack crash logs
 docker run -d --name live-crash-demo test-buggy-app
 
 ```
@@ -144,16 +142,16 @@ docker run -d --name live-crash-demo test-buggy-app
 
 ```text
 .
-├── stack.py               # Core Streamlit Dashboard & Investigator Agent
-├── error_database.json    # JSON Knowledge Base mapping signatures to patches
-├── requirements.txt       # Python project dependencies
-├── README.md              # Project documentation
-├── Icon/                  # Banners and UI Screenshots
-│   ├── Banner.png         # Main Header Banner
-│   └── Banner2.png        # UI Dashboard Screenshot
-└── docker-demo/           # Live Docker container testing sandbox
-    ├── buggy_app.py       # Test script generating multi-language crash traces
-    └── Dockerfile         # Docker configuration for testing
+├── stack.py                             # Core Streamlit Dashboard & Investigator Agent
+├── error_database.json                  # JSON Knowledge Base mapping signatures to patches
+├── requirements.txt                     # Python project dependencies
+├── README.md                            # Project documentation
+├── Icon/                                # Banners and UI Screenshots
+│   ├── Banner.png                       # Main Header Banner
+│   └── Banner2.png                      # UI Dashboard Screenshot
+└── docker-demo/                         # Live Docker container testing sandbox
+    ├── app_with_error.py                # Test script generating multi-language crash traces
+    └── docker_telemetry_harvester.py    # Docker configuration for testing
 
 ```
 
