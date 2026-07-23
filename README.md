@@ -15,9 +15,9 @@
   <img src="https://visitor-badge.laobi.icu/badge?page_id=alihusnain404.Python-Stack-Investigator">
 </p>
 
-## **🕵️‍♂️ Multi-Language AI Log Investigator & Forensic Dashboard**
+## **🕵️‍♂️ Multi-Language Python Log Investigator & Forensic Dashboard**
 
-**Python Stack Investigator** is an enterprise-grade, real-time log ingestion and incident response dashboard. It goes beyond simple log parsers by analyzing multi-stack production crashes, directly extracting live Docker container telemetry, and offering automated side-by-side code remediations.
+**Python Stack Investigator** is a great, real-time log ingestion and incident response dashboard. It goes beyond simple log parsers by analyzing multi-stack production crashes, directly extracting live Docker container telemetry, and offering automated side-by-side code remediations.
 
 > **"Accelerate Mean Time to Resolution (MTTR) - Ingest multi-language logs, calculate infrastructure health, and patch code instantly."**
 
